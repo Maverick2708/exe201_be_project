@@ -1,5 +1,7 @@
+using BE_Project_Exe201;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Repository.Helpers;
 using Repository.Models;
 using System.Text.Json.Serialization;
 
@@ -17,10 +19,28 @@ builder.Services
     .AddEntityFrameworkStores<HabestContext>()
     .AddDefaultTokenProviders();
 
+//add DJ
+builder.Services.AddApiWebService();
+
+//config cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("app-cors",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .WithExposedHeaders("X-Pagination")
+            .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddDbContext<HabestContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Habest"));
 });
+
+builder.Services.AddAutoMapper(typeof(AutomapperProfile).Assembly);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,7 +51,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("app-cors");
 app.UseAuthorization();
 
 app.MapControllers();
