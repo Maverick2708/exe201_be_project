@@ -12,6 +12,9 @@ namespace BE_Project_Exe201
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IReportServices, ReportServices>();
 
+            services.AddScoped<IPersonRepository, PersonRepository>();
+            services.AddScoped<IPersonServices, PersonServices>();
+
             return services;
         }
     }

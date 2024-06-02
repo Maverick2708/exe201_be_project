@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Repository.Models;
+using Repository.ViewModels.Person;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Repository.Helpers
     {
         public AutomapperProfile()
         {
-            
+            CreateMap<PersonModel, Person>().ReverseMap();
         }
     }
 }
