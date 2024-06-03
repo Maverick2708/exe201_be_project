@@ -15,6 +15,10 @@ namespace BE_Project_Exe201
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IPersonServices, PersonServices>();
 
+            services.AddScoped<IGenreCommunityService, GenreCommunityService>();
+            services.AddScoped<IGenreCommunityRepository, GenreCommunityRepository>();
+
+
             return services;
         }
     }
