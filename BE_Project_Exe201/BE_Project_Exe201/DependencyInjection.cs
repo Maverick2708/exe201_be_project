@@ -18,6 +18,8 @@ namespace BE_Project_Exe201
             services.AddScoped<IGenreCommunityService, GenreCommunityService>();
             services.AddScoped<IGenreCommunityRepository, GenreCommunityRepository>();
 
+            services.AddScoped<ICommunityService, CommunityService>();
+            services.AddScoped<ICommunityRepository, CommunityRepository>();
 
             return services;
         }

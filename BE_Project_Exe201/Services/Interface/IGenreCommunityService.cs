@@ -12,5 +12,6 @@ namespace Services.Interface
     public interface IGenreCommunityService
     {
         public Task<ResponeModel> CreateGenreCommunity(GenreCommunityModel createGenreCommunuity);
+
     }
 }
